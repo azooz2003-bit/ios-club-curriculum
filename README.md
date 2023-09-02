@@ -1,1 +1,1 @@
-# ios-club-curriculum
+# iOS Club Curriculum Files
