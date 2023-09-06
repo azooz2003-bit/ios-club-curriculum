@@ -17,6 +17,14 @@ for index in 1...5 {
     print("\(index) times 5 is \(index * 5)")
 }
 
+/*
+ Some types of Range:
+ 1...n <==> Closed Range [1, n]
+ 1..<n <==> Half-Open Range [1, n)
+ 1... <==> Open Range, inclusive (can be used in array indexing)
+ ...n <==> Open Range (can be used in array indexing)
+ */
+
 let hours = 12
 let hourInterval = 3
 // for-in with stride function.

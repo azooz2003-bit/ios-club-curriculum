@@ -14,8 +14,8 @@ if isHungry {
     print("Nothing was ordered")
 }
 
-// TERNARY: we encourage you to use this htroughout the semester to maintain efficient, readable code.
+// TERNARY: we encourage you to use this throughout the semester to maintain efficient, readable code.
 //                         condition ?  value if condition is true :  value if condition is false
-var selectedOrder: String = isHungry ?   "Burger ordered"   :  "Nothing was ordered"
+var selectedOrder = isHungry ? "Burger ordered" : "Nothing was ordered"
 
 print(selectedOrder)

@@ -1,54 +1,47 @@
-
-// functions are types => function types! 🤯🤯🤯
-
-let myAge: Int
-let myPerson: String
-
-var greet: (String, Int) -> String // This is the notation for function types that take an input of (String, Int) and return a String.
-
-func multiple(value: Int) {
-    print(value)
+// Creating a function
+func sayHello(name: String, anotherPerson: String) -> String {
+    return "Hello \(name), and \(anotherPerson)"
 }
 
-multiple(value: 123)
+sayHello(name: "John", anotherPerson: "Mark")
 
-func greetingFunction(person: String, age: Int) -> String {
-    let greeting = "Hello, \(person) from \(#function). You are \(age) years old";
-    return greeting
+// Functions are types in Swift. The above function's type is (String, String) -> String.
+// Since Functions are types, you can assign them to variables
+
+var helloFunc = sayHello
+helloFunc("John", "Mark")
+
+// explicit and implicit parameter values
+func anotherSayHello(to person: String, and aFriend: String) -> String {
+    return "Hello \(person), and \(aFriend)"
 }
 
-// 😱🫣 We can pass functions (without the closed parenthesis) to variables and other parameters for several reasons.
-greet = greetingFunction
+// Since functions are types and can be assigned to variables, you can also pass them as parameters.
+// These becomes "closures".
 
-// greet() here does the exact same thing that greetingFunction() does, we're just using the previous assignment to call it with a different name.
-let functionGreeting = greet("George P. Burdell", 42)
-print(functionGreeting)
-
-// Closures are essentially anonymous functions (no name functions). Their use cases will be clearer later on. Just know how they work for now.
-let greetingClosure: (String, Int) -> String
-
-// Wondering where the "person, age in" syntax came from? This is just how we retrieve the (String, Int) input passed into the function and use it. Also, calling the input variable "person" from "person, age in" doesn't matter, since it's an anonymous function (a closure), it would act the same if I changed it to "name". Naming the input is simply an act of convenience.
-greetingClosure = { person, age in // Would act the same if changed to "name, age in" OR name, "years in"
-    let greeting = "Hello, \(person) from \(#function). You are \(age) years old";
-    return greeting
+func sayHiAndPerformAnOperation(name: String, operation: (Int) -> Int) -> String {
+    return "Hello \(name). The result of your operation(5) is \(operation(5))."
 }
 
-let closureGreeting = greetingClosure("George P. Burdell", 42)
-print(closureGreeting)
+sayHiAndPerformAnOperation(name: "John", operation: { myInt in
+    return myInt + 5
+})
 
-// We can pass functions to other functions!!! A lot of array and dictionary operations require passing in functions, so knowing this is useful.
+// Syntactic Sugar Step 1: Remove 'return' if 1-liner
 
-func greetOrShame(greet: (String, Int) -> String) {
-    if Bool.random() {
-        let greeting = greet("George P. Burdell", 42)
-        print(greeting)
-    } else {
-        let shame = "You are not even real!"
-        print(shame)
-    }
+sayHiAndPerformAnOperation(name: "John", operation: { myInt in
+    myInt + 5
+})
+
+// Syntactic Sugar Step 2: Remove last parameter name
+
+sayHiAndPerformAnOperation(name: "John") { myInt in
+    myInt + 5
 }
 
-greetOrShame(greet: greetingFunction)
-greetOrShame(greet: greetingClosure)
+// Syntactic Sugar Step 3: Remove parameter name in closure
+
+sayHiAndPerformAnOperation(name: "John") { $0 + 5 }
+
 
 

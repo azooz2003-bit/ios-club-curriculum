@@ -34,10 +34,18 @@ let MY_AGE_CONSTANT: Int = 20
 // Operations placeholder
 //print("MY_AGE_CONSTANT is \(MY_AGE_CONSTANT)")
 
-/*
-var NIL = nil
- ^ Illegal to assign without an explicit type, however to introduce this simply, think of nil as None in Python or null in Java.
- */
+// Explicit vs. Implicit Declarations
+
+var helloString = "Hello, Swift@" // inferred that this is a string. Same as var hello: String = ""
+var anInteger = 10 // inferred that this is an Int
+var aDoubleOrFloat = 10.0 // Swift will infer this to be a Double by default
+
+var moreStrings = ["A", "String", "Of", "Words"] // inferred as [String]
+
+// var anArrayOfWhat = [] => This DOES NOT work. Swift does not know what the type of anArray should be
+var correctEmptyStringArrayDeclaration = [String]()
+var anotherCorrectEmptyStringArrayDeclaration: [String] = []
+
 
 
 
